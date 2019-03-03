@@ -1,0 +1,52 @@
+.ka-header {
+  display: block;
+  height: 100px;
+}
+
+.ka-footer {
+  display: block;
+  height: 100px;
+}
+
+.ka-section {
+  display: block;
+  height: 100px;
+  background: blue;
+}
+
+.ka-aside {
+  display: block;
+  height: 100%;
+  position: absolute;
+  background: red;
+  left: 0;
+}
+
+.ka-layout {
+
+  &.ka-layout_flex {
+    height: 100%;
+
+    &>.ka-layout__warper {
+      display: flex;
+      flex-direction: column;
+
+      &>.ka-layout,
+      &>.ka-section {
+        flex: 1;
+        background: yellow;
+      }
+    }
+  }
+
+  &.ka-layout_block {
+    height: auto;
+    display: block;
+    flex-direction: initial;
+  }
+
+  .ka-layout__warper {
+    position: relative;
+    height: 100%;
+  }
+}

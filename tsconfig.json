@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "lib": ["es2015", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "$root/*": ["*"],
+            "$widget/*": ["src/widget/*"],
+            "$src/*": ["src/*"],
+            "$component/*": ["src/component/*"],
+            "$tools": ["src/script/tools.tsx"],
+            "$preset": ["src/script/preset.tsx"]
+        }
+    },
+    "include": [
+        "./src/**/*",
+        "./example/**/*"
+    ]
+}
