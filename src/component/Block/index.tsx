@@ -1,4 +1,4 @@
-import withPredefined from '$widget/withPredefined';
+import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -15,6 +15,4 @@ function Block(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Block, {
-  className: 'block'
-});
+export default withPredefined(Block);

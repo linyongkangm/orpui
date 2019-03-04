@@ -1,5 +1,5 @@
 import { numberToPercent } from '$tools';
-import withPredefined from '$widget/withPredefined';
+import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 import { Consumer } from './Context';
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -45,6 +45,4 @@ function Col(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Col, {
-  className: 'col'
-});
+export default withPredefined(Col);

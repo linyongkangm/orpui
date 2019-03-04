@@ -1,5 +1,5 @@
 import * as tools from '$tools';
-import withPredefined, { prefixTo } from '$widget/withPredefined';
+import { prefixTo, withIExpandPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 import Aside from './Aside';
 
@@ -36,6 +36,4 @@ function Layout(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Layout, {
-  className: 'layout'
-});
+export default withIExpandPredefined(Layout);

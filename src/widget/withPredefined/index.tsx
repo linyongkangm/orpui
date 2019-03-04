@@ -7,21 +7,34 @@ const prefixTo = tools.withPrefix(Config.prefix);
 interface IPreprops {
   className?: string | string[];
 }
+
 // tslint:disable-next-line:max-line-length
-type WithPredefined = <P>(Component: React.JSXElementConstructor<P>, preprops: IPreprops) => typeof Component;
-const withPredefined: WithPredefined = (Component, preprops) => {
+function withPredefined<P>(Component: React.JSXElementConstructor<P>, preprops: IPreprops = {}): typeof Component {
   const { className: cs = [] } = preprops;
-  const preclassNames = (Array.isArray(cs) ? cs : [cs]).map((name) => prefixTo(name.toLowerCase()));
-  return (props: IPreprops) => {
+  // tslint:disable-next-line:max-line-length
+  const preclassNames = (Array.isArray(cs) ? cs : [cs]).concat(Component.name).map((name) => prefixTo(name.toLowerCase()));
+  return (props: P) => {
     const {
       className,
       ...others
-    } = props;
-    return <Component className={preclassNames.concat(className).join(' ')} {...(others as any)}></Component>;
+    } = props as IPreprops;
+    const realClassName = tools.addClassName(preclassNames, className as string).join(' ');
+    return <Component className={realClassName} {...(others as any)}></Component>;
   };
-};
+}
 
-export default withPredefined;
+interface IExpand<P> {
+  isInstance: (element: React.ReactElement) => element is React.ReactElement<P, React.JSXElementConstructor<P>>;
+}
+
+function withIExpandPredefined<P>(Component: React.JSXElementConstructor<P>, preprops: IPreprops = {}) {
+  const Real: typeof Component & IExpand<P> = (withPredefined(Component, preprops) as any);
+  Real.isInstance = (element): element is React.ReactElement<P, typeof Component> => element.type === Real;
+  return Real;
+}
+
 export {
   prefixTo,
+  withIExpandPredefined,
+  withPredefined
 };

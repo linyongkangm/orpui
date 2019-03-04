@@ -1,4 +1,4 @@
-import withPredefined, { prefixTo } from '$widget/withPredefined';
+import { prefixTo, withIExpandPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -19,6 +19,4 @@ function Header(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Header, {
-  className: 'header'
-});
+export default withIExpandPredefined(Header);

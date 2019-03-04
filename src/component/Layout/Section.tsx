@@ -1,4 +1,4 @@
-import withPredefined, { prefixTo } from '$widget/withPredefined';
+import { prefixTo, withIExpandPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -19,6 +19,4 @@ function Section(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Section, {
-  className: Section.name
-});
+export default withIExpandPredefined(Section);

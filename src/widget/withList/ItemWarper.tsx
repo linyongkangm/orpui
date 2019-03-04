@@ -1,4 +1,4 @@
-import withPredefined from '$widget/withPredefined';
+import { withPredefined } from '$widget/withPredefined';
 import Warper from './Warper';
 
 const ItemWarper = withPredefined(Warper, {

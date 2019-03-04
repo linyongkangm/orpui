@@ -1,5 +1,5 @@
 import * as tools from '$tools';
-import withPredefined from '$widget/withPredefined';
+import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 import { Provider } from './Context';
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,6 +21,4 @@ function Row(props: IProps = {}) {
   );
 }
 
-export default withPredefined(Row, {
-  className: 'row'
-});
+export default withPredefined(Row);
