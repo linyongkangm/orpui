@@ -1,7 +1,6 @@
 import * as tools from '$tools';
 import withPredefined, { prefixTo } from '$widget/withPredefined';
 import * as React from 'react';
-
 interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: number | string;
 }
@@ -26,16 +25,18 @@ function Aside(props: IProps = {}) {
 }
 
 type TypeAside = typeof Aside;
-interface IRealAside extends TypeAside {
-  isAside: (element: React.ReactElement) => element is React.ReactElement<IProps, typeof Aside>;
+interface IReal extends TypeAside {
+  // tslint:disable-next-line:max-line-length
+  isInstance: (element: React.ReactElement) => element is React.ReactElement<IProps, React.JSXElementConstructor<IProps>>;
 }
 
-function getRealAside(): IRealAside {
-  const RealAside = (withPredefined(Aside, {
-    className: 'aside'
-  }) as IRealAside);
-  RealAside.isAside = (element): element is React.ReactElement<IProps, typeof Aside> => element.type === RealAside;
-  return RealAside;
+function getReal<P, R>(Component: React.JSXElementConstructor<P>): IReal {
+  const Real = (withPredefined(Component, {
+    className: Component.name
+  }) as IReal);
+  // tslint:disable-next-line:max-line-length
+  Real.isInstance = (element): element is React.ReactElement<P, typeof Component> => element.type === Component;
+  return Real;
 }
 
-export default getRealAside();
+export default getReal(Aside);

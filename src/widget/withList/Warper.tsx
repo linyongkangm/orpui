@@ -5,13 +5,13 @@ interface IProps<T> extends React.HTMLAttributes<T> {
   tag?: keyof JSX.IntrinsicElements;
 }
 
-function Warper<T extends HTMLElement>(props: IProps<T>) {
+function Warper<T extends HTMLElement = HTMLDivElement>(props: IProps<T>) {
   const {
     tag = 'div',
     children,
     ...others
   } = props;
-  const Tag: any = tag;
+  const Tag: React.JSXElementConstructor<React.HTMLAttributes<T>> = tag as any;
   return (
     <Tag {...others}>
       {children}

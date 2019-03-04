@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Section from './Section';
 import './style.scss';
 
-type TypeLayout = typeof Layout;
+type TypeLayout = (props: any) => React.ReactElement | null;
 interface IFaceLayout extends TypeLayout {
   Header: typeof Header;
   Footer: typeof Footer;

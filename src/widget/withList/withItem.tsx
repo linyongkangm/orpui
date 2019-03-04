@@ -1,4 +1,3 @@
-import { IFunctionalRender } from '$root/src/types';
 import * as React from 'react';
 import ItemWarper from './ItemWarper';
 
@@ -7,14 +6,14 @@ interface IProps<IP, IT> extends React.HTMLAttributes<IT> {
   data: IP;
 }
 
-function withItem<IP>(Item: IFunctionalRender<IP>) {
-  return function RealItem<ID extends HTMLElement>(props: IProps<IP, ID>) {
+function withItem<IP>(Item: React.JSXElementConstructor<IP>) {
+  return function RealItem<IT extends HTMLElement>(props: IProps<IP, IT>) {
     const {
       data,
       ...others
     } = props;
     return (
-      <ItemWarper<ID> {...others}>
+      <ItemWarper<IT> {...others}>
         <Item {...data}></Item>
       </ItemWarper>
     );

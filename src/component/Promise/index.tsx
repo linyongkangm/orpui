@@ -1,27 +1,26 @@
-import { IFunctionalRender } from '$src/types';
 import * as React from 'react';
 const { useState } = React;
 
-interface IProps {
-  await: Promise<any>;
+interface IProps<P> {
+  await: Promise<P>;
   children?: JSX.Element;
-  then?: IFunctionalRender<any> | JSX.Element;
-  catch?: IFunctionalRender<any> | JSX.Element;
+  then?: React.JSXElementConstructor<P> | JSX.Element;
+  catch?: React.JSXElementConstructor<P> | JSX.Element;
 }
 
-function KPromise(props: IProps) {
-  const [Target, setTarget] = useState(props.children);
+function KPromise<P>(props: IProps<P>) {
+  const [target, setTarget] = useState(props.children);
   props.await.then((response) => {
     if (props.then) {
       if (typeof props.then === 'function') {
-        setTarget(props.then(response));
+        setTarget(<props.then {...response}></props.then>);
       } else {
         setTarget(props.then);
       }
     }
   }).catch((reason) => {
-    if (typeof props.then === 'function') {
-      setTarget(props.then(reason));
+    if (typeof props.catch === 'function') {
+      setTarget(<props.catch {...reason}></props.catch>);
     } else {
       setTarget(props.catch);
     }
@@ -29,7 +28,7 @@ function KPromise(props: IProps) {
 
   return (
     <>
-      {Target}
+      {target}
     </>
   );
 }

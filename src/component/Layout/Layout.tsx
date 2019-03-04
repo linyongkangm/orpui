@@ -19,7 +19,7 @@ function Layout(props: IProps = {}) {
   let warperStyle: React.CSSProperties = {};
   if (Array.isArray(children)) {
     children.forEach((child) => {
-      if (React.isValidElement(child) && Aside.isAside(child)) {
+      if (React.isValidElement(child) && Aside.isInstance(child)) {
         warperStyle = Object.assign({
           paddingLeft: tools.toCSSValue(child.props.width),
         }, warperStyle);

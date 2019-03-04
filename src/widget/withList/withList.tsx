@@ -1,4 +1,3 @@
-import { IFunctionalRender } from '$root/src/types';
 import * as React from 'react';
 import ListWarper from './ListWarper';
 import withItem from './withItem';
@@ -11,7 +10,7 @@ interface IProps<LT, IT, IP> {
   data: IP[];
 }
 
-function withList<IP>(Item: IFunctionalRender<IP>) {
+function withList<IP>(Item: React.JSXElementConstructor<IP>) {
   const RealItem = withItem(Item);
   // tslint:disable-next-line:max-line-length
   return function RealList<LT extends HTMLElement = HTMLDivElement, IT extends HTMLElement = HTMLDivElement>(props: IProps<LT, IT, IP>) {
