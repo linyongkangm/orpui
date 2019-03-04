@@ -10,7 +10,6 @@ function Aside(props: IProps = {}) {
   const {
     children,
     width = '100px',
-    style,
     ...others
   } = props;
 
@@ -19,7 +18,7 @@ function Aside(props: IProps = {}) {
   };
   return (
     <div {...others}>
-      <div className={prefixTo('layout__warper')} style={warperStyle}>
+      <div className={prefixTo('aside__warper')} style={warperStyle}>
         {children}
       </div>
     </div>

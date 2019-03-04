@@ -5,17 +5,37 @@ import * as React from 'react';
 const { Header, Footer, Aside, Section } = Layout;
 
 export const Demo = (props: any) => {
-  const [width, setWidth] = React.useState(10);
+  const [width, setWidth] = React.useState(300);
   return (
-    <Layout >
-      <Header>Header</Header>
+    <div>
+      <div className='demo'>
+        <Layout mode='flex'>
+          <Header>Header</Header>
+          <Layout>
+            <Aside width={width} onClick={() => setWidth(width + 1)}>Aside</Aside>
+            <Section>Section</Section>
+          </Layout>
+          <Footer>Footer</Footer>
+        </Layout>
+      </div>
+      <div className='demo'>
+        <Layout >
+          <Header>Header</Header>
+          <Section>Section</Section>
+          <Footer>Footer</Footer>
+        </Layout>
+      </div>
 
-      <Layout>
-        <Aside width={width} onClick={() => setWidth(width + 1)}>Aside</Aside>
-        <Section>Section</Section>
-      </Layout>
-
-      <Footer>Footer</Footer>
-    </Layout>
+      <div className='demo'>
+        <Layout style={{ height: '100%' }}>
+          <Aside width={width} onClick={() => setWidth(width + 1)}>Aside</Aside>
+          <Layout mode='flex'>
+            <Header>Header</Header>
+            <Section>Section</Section>
+            <Footer>Footer</Footer>
+          </Layout>
+        </Layout>
+      </div>
+    </div>
   );
 };

@@ -1,28 +1,45 @@
 .ka-header {
-  display: block;
-  height: 100px;
+  background-color: green;
+
+  &>.ka-header__warper {
+    height: 100%;
+  }
 }
 
 .ka-footer {
-  display: block;
-  height: 100px;
+  background-color: greenyellow;
+
+  &>.ka-footer__warper {
+    height: 100%;
+  }
 }
 
 .ka-section {
-  display: block;
-  height: 100px;
   background: blue;
+
+  &>.ka-section__warper {
+    height: 100%;
+  }
 }
 
 .ka-aside {
-  display: block;
-  height: 100%;
-  position: absolute;
   background: red;
+
+  position: absolute;
   left: 0;
+
+  &>.ka-aside__warper {
+    height: 100%;
+  }
 }
 
 .ka-layout {
+  background-color: yellow;
+
+  &>.ka-layout__warper {
+    position: relative;
+    height: 100%;
+  }
 
   &.ka-layout_flex {
     height: 100%;
@@ -34,7 +51,6 @@
       &>.ka-layout,
       &>.ka-section {
         flex: 1;
-        background: yellow;
       }
     }
   }
@@ -43,10 +59,5 @@
     height: auto;
     display: block;
     flex-direction: initial;
-  }
-
-  .ka-layout__warper {
-    position: relative;
-    height: 100%;
   }
 }
