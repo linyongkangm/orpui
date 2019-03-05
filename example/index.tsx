@@ -6,8 +6,9 @@ import GridDemo from './GridDemo';
 import LayoutDemo from './LayoutDemo';
 import PromiseDemo from './PromiseDemo';
 import './style.scss';
+import withListDemo from './withListDemo';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo];
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo];
 
 function Nav() {
   return (
