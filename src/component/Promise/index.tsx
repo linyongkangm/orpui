@@ -1,31 +1,28 @@
 import * as React from 'react';
-const { useState } = React;
+const { useState, useEffect } = React;
 
 interface IProps<P> {
   await: Promise<P>;
-  children?: JSX.Element;
+  children?: React.ReactNode;
   then?: React.JSXElementConstructor<P> | JSX.Element;
-  catch?: React.JSXElementConstructor<P> | JSX.Element;
+  catch?: React.JSXElementConstructor<any> | JSX.Element;
 }
 
-function KPromise<P>(props: IProps<P>) {
+function KPromise<P extends object>(props: IProps<P>) {
   const [target, setTarget] = useState(props.children);
-  props.await.then((response) => {
-    if (props.then) {
-      if (typeof props.then === 'function') {
-        setTarget(<props.then {...response}></props.then>);
-      } else {
-        setTarget(props.then);
-      }
-    }
-  }).catch((reason) => {
-    if (typeof props.catch === 'function') {
-      setTarget(<props.catch {...reason}></props.catch>);
-    } else {
-      setTarget(props.catch);
-    }
-  });
-
+  if (target === props.children) {
+    props.await.then((response) => {
+      return (
+        props.then && typeof props.then === 'function' ? <props.then {...response}></props.then> : props.then
+      );
+    }).catch((reason) => {
+      return (
+        props.catch && typeof props.catch === 'function' ? <props.catch {...reason}></props.catch> : props.catch
+      );
+    }).then((component) => {
+      setTarget(component);
+    });
+  }
   return (
     <>
       {target}
