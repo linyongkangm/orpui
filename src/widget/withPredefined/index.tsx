@@ -3,7 +3,6 @@ import * as tools from '$tools';
 import * as React from 'react';
 
 const prefixTo = tools.withPrefix(Config.prefix);
-
 interface IPreprops {
   className?: string | string[];
 }
@@ -13,14 +12,18 @@ function withPredefined<P>(Component: React.JSXElementConstructor<P>, preprops: 
   const { className: cs = [] } = preprops;
   // tslint:disable-next-line:max-line-length
   const preclassNames = (Array.isArray(cs) ? cs : [cs]).concat(Component.name).map((name) => prefixTo(name.toLowerCase()));
-  return (props: P) => {
-    const {
-      className,
-      ...others
-    } = props as IPreprops;
-    const realClassName = tools.addClassName(preclassNames, className as string).join(' ');
-    return <Component className={realClassName} {...(others as any)}></Component>;
-  };
+
+  return new Proxy(Component, {
+    apply(Target, ctx, args: [P]) {
+      const props = args[0];
+      const {
+        className,
+        ...others
+      } = props as IPreprops;
+      const realClassName = tools.addClassName(preclassNames, className as string).join(' ');
+      return <Target className={realClassName} {...(others as any)}></Target>;
+    }
+  });
 }
 
 interface IExpand<P> {
