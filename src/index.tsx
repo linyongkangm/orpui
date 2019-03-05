@@ -1,6 +1,14 @@
 // kayak
-import { Demo } from './component/Demo';
-import './style.scss';
+import Block from '$component/Block';
+import Grid from '$component/Grid';
+import Layout from '$component/Layout';
+import Promise from '$component/Promise';
+// import Block from '$component/Block';
+// import Block from '$component/Block';
+// import Block from '$component/Block';
+// import Block from '$component/Block';
+// import Block from '$component/Block';
+
 export {
-  Demo,
+  Block, Layout, Promise, Grid
 };
