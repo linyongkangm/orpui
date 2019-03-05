@@ -1,5 +1,5 @@
 import * as React from 'react';
-const { useState, useEffect } = React;
+const { useState } = React;
 
 interface IProps<P> {
   await: Promise<P>;

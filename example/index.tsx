@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-
 import BlockDemo from './BlockDemo';
 import GridDemo from './GridDemo';
+import LayoutDemo from './LayoutDemo';
 import PromiseDemo from './PromiseDemo';
+import './style.scss';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo];
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo];
 
 function Nav() {
   return (
