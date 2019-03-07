@@ -1,3 +1,5 @@
+import { Position } from '$src/types';
+
 
 // tslint:disable-next-line:max-line-length
 function withTypeof<T>(type: 'string' | 'number' | 'bigint' | 'boolean' | 'symbol' | 'undefined' | 'object' | 'function') {
@@ -48,4 +50,31 @@ export function removeClassName<P extends string | string[]>(original: P, remove
     }
   }
   return original;
+}
+
+
+
+interface IOuter {
+  (client: DOMRect | ClientRect, target: DOMRect | ClientRect): boolean;
+}
+function withOuter(position: Position) {
+  return (client: DOMRect | ClientRect, target: DOMRect | ClientRect) => {
+    return target[position] < client[position];
+  }
+}
+export const isOuterTop: IOuter = (client, target) => target.top < client.top;
+export const isOuterLeft: IOuter = (client, target) => target.left < client.left;
+export const isOuterRight: IOuter = (client, target) => target.right > client.right;
+export const isOuterBottom: IOuter = (client, target) => target.bottom > client.bottom;
+export const isOuter: ReturnType<typeof withOuter> = (client, target) => {
+  return isOuterTop(client, target) || isOuterLeft(client, target) || isOuterRight(client, target) || isOuterBottom(client, target);
+}
+export const outerPositions = (client: DOMRect | ClientRect, target: DOMRect | ClientRect) => {
+  const ps: Array<Position> = [];
+  if (isOuterTop(client, target)) ps.push('top');
+  if (isOuterLeft(client, target)) ps.push('left');
+  if (isOuterRight(client, target)) ps.push('right');
+  if (isOuterBottom(client, target)) ps.push('bottom');
+  if (ps.length === 0) return null;
+  return ps;
 }

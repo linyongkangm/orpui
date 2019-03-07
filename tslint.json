@@ -7,7 +7,8 @@
     "rules": {
         "quotemark": [true, "single", "jsx-single"],
         "indent": [true, "spaces", 2],
-        "trailing-comma": false
+        "trailing-comma": false,
+        "object-literal-sort-keys": false,
     },
     "rulesDirectory": []
 }

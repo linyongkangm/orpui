@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import AffixDemo from './AffixDemo';
 import BlockDemo from './BlockDemo';
 import GridDemo from './GridDemo';
 import LayoutDemo from './LayoutDemo';
@@ -8,7 +9,7 @@ import PromiseDemo from './PromiseDemo';
 import './style.scss';
 import withListDemo from './withListDemo';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo];
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo];
 
 function Nav() {
   return (

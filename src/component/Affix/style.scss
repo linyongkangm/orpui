@@ -1,0 +1,22 @@
+@mixin solid($position) {
+  &.ka-affix_solid-#{$position} {
+    position: fixed;
+    #{$position}: 0;
+
+  }
+}
+
+.ka-affix__placeholder {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.ka-affix {
+  &.ka-affix__content {
+    @include solid('top');
+    @include solid('bottom');
+    @include solid('left');
+    @include solid('right');
+    visibility: visible;
+  }
+}
