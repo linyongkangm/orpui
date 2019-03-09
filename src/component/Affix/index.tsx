@@ -51,7 +51,7 @@ function Affix(props: IProps) {
       const positions = outerPositions(boundClientRect, rect);
       let newClassname = prefixTo(Affix.name.toLowerCase());
       if (positions !== null) {
-        newClassname = addClassName(newClassname, positions.map(position => prefixTo(`affix_solid-${position}`)).join());
+        newClassname = addClassName(newClassname, positions.map(position => prefixTo(`affix_solid-${position}`)).join(' '));
       }
       if (newClassname != nowClassname) {
         onChangeSet && onChangeSet(event);
