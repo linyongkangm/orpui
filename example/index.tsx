@@ -6,10 +6,12 @@ import BlockDemo from './BlockDemo';
 import GridDemo from './GridDemo';
 import LayoutDemo from './LayoutDemo';
 import PromiseDemo from './PromiseDemo';
-import './style.scss';
 import withListDemo from './withListDemo';
+import PaginationDemo from './PaginationDemo';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo];
+import './style.scss';
+
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo, PaginationDemo];
 
 function Nav() {
   return (
