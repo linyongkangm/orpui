@@ -8,10 +8,10 @@ import LayoutDemo from './LayoutDemo';
 import PromiseDemo from './PromiseDemo';
 import withListDemo from './withListDemo';
 import PaginationDemo from './PaginationDemo';
-
+import FormDemo from './FormDemo';
 import './style.scss';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo, PaginationDemo];
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo, PaginationDemo, FormDemo];
 
 function Nav() {
   return (
