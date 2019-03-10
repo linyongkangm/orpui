@@ -3,14 +3,14 @@ import * as React from 'react';
 import { Model } from '$component/Form';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  model: Model<string>;
+  model?: Model<string>;
 }
 
 function Input(props: IProps) {
   const {
     model,
-    name = model.ename,
-    value = model.value,
+    name = model && model.ename,
+    value = model && model.value,
     onChange,
     ...others
   } = props;
@@ -20,7 +20,7 @@ function Input(props: IProps) {
         name={name}
         value={value}
         onChange={(e) => {
-          model(e.target.value);
+          if (model) model(e.target.value);
           if (onChange) onChange(e);
         }}
         {...others}></input>

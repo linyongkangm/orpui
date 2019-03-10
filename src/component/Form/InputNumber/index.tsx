@@ -3,14 +3,14 @@ import * as React from 'react';
 import { Model } from '$component/Form';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  model: Model<number | string>;
+  model?: Model<number | string>;
 }
 
 function InputNumber(props: IProps) {
   const {
     model,
-    name = model.ename,
-    value = model.value,
+    name = model && model.ename,
+    value = model && model.value,
     onChange,
     ...others
   } = props;
@@ -31,7 +31,7 @@ function InputNumber(props: IProps) {
             targetValue = targetValue.substr(0, len);
           }
           if (targetValue === e.target.value) {
-            model(targetValue);
+            if (model) model(targetValue);
             if (onChange) onChange(e);
           }
         }}

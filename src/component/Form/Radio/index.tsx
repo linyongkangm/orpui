@@ -3,16 +3,16 @@ import * as React from 'react';
 import { Model } from '$component/Form';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  model: Model<string>;
+  model?: Model<string>;
 }
 
 function Radio(props: IProps) {
   const {
     model,
-    name = model.ename,
+    name = model && model.ename,
     value,
     onChange,
-    checked,
+    checked = model && model.value === value,
     ...others
   } = props;
   return (
@@ -21,9 +21,9 @@ function Radio(props: IProps) {
         type='radio'
         name={name}
         value={value}
-        checked={value === model.value}
+        checked={checked}
         onChange={(e) => {
-          model(e.target.value);
+          if (model) model(e.target.value);
           if (onChange) onChange(e);
         }}
         {...others}></input>

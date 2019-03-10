@@ -3,14 +3,15 @@ import * as React from 'react';
 import { Model } from '$component/Form';
 
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  model: Model<boolean>;
+  model?: Model<boolean>;
 }
 
 function Checkbox(props: IProps) {
   const {
     model,
-    name = model.ename,
-    checked = model.value,
+    name = model && model.ename,
+    value,
+    checked = model && model.value,
     onChange,
     ...others
   } = props;
@@ -19,9 +20,10 @@ function Checkbox(props: IProps) {
       <input
         type='checkbox'
         name={name}
+        value={value}
         checked={checked as boolean}
         onChange={(e) => {
-          model(e.target.checked);
+          if (model) model(e.target.checked);
           if (onChange) onChange(e);
         }}
         {...others}></input>
