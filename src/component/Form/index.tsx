@@ -1,23 +1,24 @@
 import Input from './Input';
 import InputNumber from './InputNumber';
+import Checkbox from './Checkbox';
 import './style.scss';
 import * as React from 'react';
 
 
 export {
-  Input, InputNumber
+  Input, InputNumber, Checkbox
 }
 
-export type Model<V> = React.Dispatch<React.SetStateAction<V | string>> & { value: V | string };
+export type Model<V = string> = React.Dispatch<React.SetStateAction<V>> & { value: string | V };
 
-export function useModel<V>(defaultValue: V | string) {
+export function useModel<V>(defaultValue: V) {
   const [value, setValue] = React.useState(defaultValue);
   return getModel<V>(value, setValue);
 }
 
-function getModel<V>(val: V | string, set: React.Dispatch<React.SetStateAction<V>>): Model<V> {
+function getModel<V>(val: V, set: React.Dispatch<React.SetStateAction<V>>) {
   const temp = set as Model<V>;
-  temp.value = val;
+  temp.value = val as any;
   return temp;
 }
 
