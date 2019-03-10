@@ -6,19 +6,22 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   model: Model<string>;
 }
 
-function Input(props: IProps) {
+function Radio(props: IProps) {
   const {
     model,
     name = model.ename,
-    value = model.value,
+    value,
     onChange,
+    checked,
     ...others
   } = props;
   return (
-    <div className={prefixTo('input__wrapper')}>
+    <div className={prefixTo('radio__wrapper')}>
       <input
+        type='radio'
         name={name}
         value={value}
+        checked={value === model.value}
         onChange={(e) => {
           model(e.target.value);
           if (onChange) onChange(e);
@@ -28,4 +31,4 @@ function Input(props: IProps) {
   );
 }
 
-export default withPredefined(Input);
+export default withPredefined(Radio);

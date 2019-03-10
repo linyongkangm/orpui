@@ -9,6 +9,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 function Checkbox(props: IProps) {
   const {
     model,
+    name = model.ename,
     checked = model.value,
     onChange,
     ...others
@@ -17,6 +18,7 @@ function Checkbox(props: IProps) {
     <div className={prefixTo('checkbox__wrapper')}>
       <input
         type='checkbox'
+        name={name}
         checked={checked as boolean}
         onChange={(e) => {
           model(e.target.checked);

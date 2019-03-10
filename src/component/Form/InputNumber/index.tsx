@@ -9,13 +9,15 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 function InputNumber(props: IProps) {
   const {
     model,
+    name = model.ename,
     value = model.value,
     onChange,
     ...others
   } = props;
   return (
-    <div className={prefixTo('input__wrapper')}>
+    <div className={prefixTo('input-number__wrapper')}>
       <input
+        name={name}
         value={value}
         onChange={(e) => {
           let targetValue = e.target.value;

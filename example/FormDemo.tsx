@@ -1,4 +1,4 @@
-import { Input, InputNumber, Checkbox, useModel } from '$component/Form';
+import { Input, InputNumber, Checkbox, Radio, useModel } from '$component/Form';
 import * as React from 'react';
 
 
@@ -6,6 +6,8 @@ export default function FormDemo() {
   const stringModel = useModel('');
   const numberModel = useModel(1);
   const booleanModel = useModel(true);
+  const radioModel = useModel('2', 'self name');
+
   return (
     <div>
       <Input model={stringModel}></Input>
@@ -15,6 +17,8 @@ export default function FormDemo() {
         }
       }></InputNumber>
       <Checkbox model={booleanModel}></Checkbox>
+      <Radio model={radioModel} value='1'></Radio>
+      <Radio model={radioModel} value='2'></Radio>
     </div>
 
   );
