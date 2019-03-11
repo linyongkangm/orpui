@@ -2,13 +2,13 @@ import Input from './Input';
 import InputNumber from './InputNumber';
 import Checkbox from './Checkbox';
 import Radio from './Radio';
-
+import Select from './Select';
 import './style.scss';
 import * as React from 'react';
 
 
 export {
-  Input, InputNumber, Checkbox, Radio
+  Input, InputNumber, Checkbox, Radio, Select
 }
 
 export type Model<V = string> = React.Dispatch<React.SetStateAction<V>> & {
