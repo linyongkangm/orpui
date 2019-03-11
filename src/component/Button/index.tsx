@@ -1,8 +1,9 @@
 import { withPredefined, prefixTo } from '$widget/withPredefined';
 import * as React from 'react';
-import './style.scss';
+import Icon from '$component/Icon';
 import { addClassName as aCN } from '$tools';
 
+import './style.scss';
 export enum Design {
   primary = 'primary',
   danger = 'danger'
@@ -55,9 +56,7 @@ function Button(props: IProps = {}) {
   if (block) realClassName = aCN(realClassName, prefixTo(`button__block`));
   if (loading) realClassName = aCN(realClassName, prefixTo(`button__loading`));
   return (
-    <button className={realClassName} onClick={(e) => {
-      if (!disabled && onClick) onClick(e);
-    }} {...others}>{children}</button>
+    <Icon design='circle-o-notch' spin={false}></Icon>
   );
 }
 
