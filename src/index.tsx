@@ -9,6 +9,8 @@ import Promise from '$component/Promise';
 // import Block from '$component/Block';
 // import Block from '$component/Block';
 
+import './theme/index.scss';
+
 export {
   Block, Layout, Promise, Grid
 };

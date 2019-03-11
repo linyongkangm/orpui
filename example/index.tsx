@@ -9,14 +9,19 @@ import PromiseDemo from './PromiseDemo';
 import withListDemo from './withListDemo';
 import PaginationDemo from './PaginationDemo';
 import FormDemo from './FormDemo';
+import ButtonDemo from './ButtonDemo';
 import './style.scss';
 
-const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo, PaginationDemo, FormDemo];
+const Comps = [BlockDemo, GridDemo, PromiseDemo, LayoutDemo, withListDemo, AffixDemo, PaginationDemo, FormDemo, ButtonDemo];
 
 function Nav() {
   return (
     <div>
-      {Comps.map((Comp) => <div key={Comp.name}><Link to={`/${Comp.name}`}>{Comp.name}</Link></div>)}
+
+      {Comps.map((Comp) => {
+        return <div key={Comp.name}><Link to={`/${Comp.name}`}>{Comp.name}</Link></div>
+      })
+      }
     </div>
   );
 }
