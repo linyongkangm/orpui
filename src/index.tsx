@@ -18,5 +18,5 @@ import Pagination from '$component/Pagination';
 import './theme/index.scss';
 
 export {
-  Block, Layout, Promise, Grid
+  Block, Layout, Promise, Grid, Affix, Button, Form, Icon, Pagination
 };

@@ -56,7 +56,7 @@ function Button(props: IProps = {}) {
   if (block) realClassName = aCN(realClassName, prefixTo(`button__block`));
   if (loading) realClassName = aCN(realClassName, prefixTo(`button__loading`));
   return (
-    <Icon design='circle-o-notch' spin={false}></Icon>
+    <Icon design='circle-o-notch' spin={true}></Icon>
   );
 }
 

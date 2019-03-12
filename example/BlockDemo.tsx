@@ -1,4 +1,4 @@
-import Block from '$component/Block';
+import { Block } from '$src/index';
 import * as React from 'react';
 
 export default function BlockDemo() {

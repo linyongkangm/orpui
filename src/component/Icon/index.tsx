@@ -24,7 +24,7 @@ function Icon(props: IProps) {
     className,
     ...others
   } = props;
-  let realClassName = addClassName(className, `fafa-${design}`);
+  let realClassName = addClassName(className, `fa fa-${design}`);
   if (spin) realClassName = addClassName(realClassName, 'fa-spin');
   if (rotate) realClassName = addClassName(realClassName, `fa-rotate-${rotate}`);
   if (flip) realClassName = addClassName(realClassName, `fa-flip-${flip}`);

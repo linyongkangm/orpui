@@ -1,4 +1,4 @@
-import Affix from '$component/Affix';
+import { Affix } from '$src/index';
 import * as React from 'react';
 
 export default function AffixDemo() {
