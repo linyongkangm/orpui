@@ -57,16 +57,12 @@ export function removeClassName<P extends string | string[]>(original: P, remove
 interface IOuter {
   (client: DOMRect | ClientRect, target: DOMRect | ClientRect): boolean;
 }
-function withOuter(position: Position) {
-  return (client: DOMRect | ClientRect, target: DOMRect | ClientRect) => {
-    return target[position] < client[position];
-  }
-}
+
 export const isOuterTop: IOuter = (client, target) => target.top < client.top;
 export const isOuterLeft: IOuter = (client, target) => target.left < client.left;
 export const isOuterRight: IOuter = (client, target) => target.right > client.right;
 export const isOuterBottom: IOuter = (client, target) => target.bottom > client.bottom;
-export const isOuter: ReturnType<typeof withOuter> = (client, target) => {
+export const isOuter: IOuter = (client, target) => {
   return isOuterTop(client, target) || isOuterLeft(client, target) || isOuterRight(client, target) || isOuterBottom(client, target);
 }
 export const outerPositions = (client: DOMRect | ClientRect, target: DOMRect | ClientRect) => {
