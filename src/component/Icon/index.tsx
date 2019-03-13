@@ -7,7 +7,7 @@ export enum Filp {
   horizontal = 'horizontal'
 }
 
-export interface IProps {
+export interface IIconProps {
   className?: string;
   design: string;
   spin?: boolean;
@@ -15,7 +15,7 @@ export interface IProps {
   flip?: Filp;
 }
 
-function Icon(props: IProps) {
+function Icon(props: IIconProps) {
   const {
     design,
     spin = false,

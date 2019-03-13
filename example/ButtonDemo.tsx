@@ -1,5 +1,7 @@
-import Button, { Design, Size, Shape } from '$component/Button';
+import Button from '$component/Button';
 import * as React from 'react';
+
+const { Design, Size, Shape } = Button;
 
 export default function ButtonDemo() {
   return (
