@@ -2,14 +2,24 @@ import { numberToPercent } from '$tools';
 import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 import { Consumer } from './Context';
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+
+interface IBaseProps {
   span?: number;
   offset?: number;
   push?: number;
   pull?: number;
 }
+type Responsive = number | IBaseProps;
+interface IColProps extends React.HTMLAttributes<HTMLDivElement>, IBaseProps {
+  xs?: Responsive;
+  sm?: Responsive;
+  md?: Responsive;
+  lg?: Responsive;
+  xl?: Responsive;
+  xxl?: Responsive;
+}
 
-function Col(props: IProps = {}) {
+function Col(props: IColProps) {
   const maxSpan = 24;
   const {
     children,
@@ -17,9 +27,16 @@ function Col(props: IProps = {}) {
     offset,
     push,
     pull,
+    xs,
+    sm,
+    md,
+    lg,
+    xl,
+    xxl,
     style = {},
     ...others
   } = props;
+
   const realStyle = Object.assign({
     left: push && numberToPercent(push / maxSpan),
     marginLeft: offset && numberToPercent(offset / maxSpan),

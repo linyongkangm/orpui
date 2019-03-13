@@ -1,4 +1,4 @@
-import Grid from '$component/Grid';
+import { Grid } from '$src/index';
 import * as React from 'react';
 
 const { Row, Col } = Grid;

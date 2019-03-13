@@ -2,11 +2,11 @@ import * as tools from '$tools';
 import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 import { Provider } from './Context';
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IRowProps extends React.HTMLAttributes<HTMLDivElement> {
   gutter?: number | string;
 }
 
-function Row(props: IProps = {}) {
+function Row(props: IRowProps) {
   const {
     children,
     gutter = 0,
