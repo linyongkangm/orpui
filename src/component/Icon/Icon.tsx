@@ -9,6 +9,7 @@ export interface IIconProps {
   spin?: boolean;
   rotate?: 90 | 180 | 270;
   flip?: Filp;
+  style?: React.CSSProperties;
 }
 
 function Icon(props: IIconProps) {
