@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { withPredefined, prefixTo } from '$widget/withPredefined';
-import Icon, { IIconProps } from '$component/Icon';
+import Icon from '$component/Icon';
 import { addClassName as aCN, isString } from '$tools';
 import { Design, Size, Shape } from './enum';
+import { ParameterProps } from '$src/types';
 import './style.scss';
 
 interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
@@ -12,7 +13,7 @@ interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   block?: boolean;
   loading?: boolean;
-  icon?: React.ReactElement<IIconProps, typeof Icon>;
+  icon?: React.ReactElement<ParameterProps<typeof Icon>, typeof Icon>;
 }
 
 function Button(props: IButtonProps) {
