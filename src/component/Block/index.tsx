@@ -1,11 +1,11 @@
 import { withPredefined } from '$widget/withPredefined';
 import * as React from 'react';
 
-interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 
-function Block(props: IProps = {}) {
+function Block(props: IBlockProps = {}) {
   const {
     children,
     ...others
